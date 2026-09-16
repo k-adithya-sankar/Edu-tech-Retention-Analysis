@@ -1,0 +1,21 @@
+import pandas as pd
+df=pd.read_csv("schoolmaster.csv")
+# print(df.head(30))
+# print(df.info())
+df = df.drop_duplicates()
+# print("Total rows:", len(df))
+# print("Unique school IDs:", df['school_id'].nunique())
+# print("Duplicate school IDs:", df['school_id'].duplicated().sum())
+# print("DISTRICTS:")
+# print(df['district'].unique())
+
+# print("\nSCHOOL TYPES:")
+# print(df['school_type'].unique())
+
+# print("\nMEDIUMS:")
+# print(df['medium'].unique())
+df["district"] = df["district"].str.upper()
+df["school_type"] = df["school_type"].str.upper()
+df["medium"] = df["medium"].str.upper()
+df.to_csv("cleaned_data/schoolmaster_cleaned.csv", index=False)
+print("School master cleaned data saved successfully!")
